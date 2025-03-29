@@ -6,7 +6,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger); // ScrollTrigger 플러그인 등록
 const Works = () => {
     useEffect(() => {
-        const text = document.querySelector('.your-selector') as HTMLElement;
+        const text = document.querySelector('.title') as HTMLElement;
         const chars = text.innerText.split('');
         text.innerHTML = ''; // 원래 텍스트를 지움
 
