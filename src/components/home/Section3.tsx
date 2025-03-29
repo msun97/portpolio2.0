@@ -18,7 +18,8 @@ const Section3 = () => {
         '뛰어난 문제해결': {
             id: 1,
             text: '프로젝트를 진행하며 예상치 못한 오류를 마주할 때, 해결방안을 찾는 것에 성취감을 느낍니다.',
-            subText: '논리적인 사고와 창의적인 접근법을 바탕으로 인내심을 가지고 해결방안을 찾아냅니다.',
+            subText:
+                '논리적인 사고와 창의적인 접근법을 바탕으로 인내심을 가지고 해결방안을 찾아냅니다.',
             tags: [
                 { label: '문제 해결', color: '#22D1EE', isWhite: false },
                 { label: '논리적 사고', color: '#3D5AF1', isWhite: true },
@@ -38,7 +39,8 @@ const Section3 = () => {
         계획적인: {
             id: 3,
             text: '프로젝트를 진행할 때, 명확한 로드맵을 설정하고 우선순위를 정해 단계적으로 해결해 나갑니다.',
-            subText: '작업 일정을 세분화하고, Git을 활용한 협업 프로세스를 정립하여 효율적인 개발을 이끌어 나갑니다.',
+            subText:
+                '작업 일정을 세분화하고, Git을 활용한 협업 프로세스를 정립하여 효율적인 개발을 이끌어 나갑니다.',
             tags: [
                 { label: '효율적인 개발', color: '#F6EDCF', isWhite: false },
                 { label: '체계적인 계획', color: '#DAF1F9', isWhite: false },
@@ -64,7 +66,7 @@ const Section3 = () => {
         // Increment the animation trigger ref whenever the value changes
         animationTriggerRef.current += 1;
 
-        const handleMouseMove = (e: React.MouseEvent) => {
+        const handleMouseMove = (e: MouseEvent) => {
             const { clientX, clientY } = e;
             contentMap[selectedValue].tags.forEach((tag, index) => {
                 const tagElement = tagRefs.current[tag.label];
