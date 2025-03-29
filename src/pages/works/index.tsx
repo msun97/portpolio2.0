@@ -7,11 +7,12 @@ gsap.registerPlugin(ScrollTrigger); // ScrollTrigger 플러그인 등록
 const Works = () => {
     useEffect(() => {
         const text = document.querySelector('.title');
-        const chars = text.innerText.split(''); // 글자들을 배열로 분리
+        if (!text) return; // 💥 요소가 없으면 실행하지 않도록 방어 코드 추가
 
+        const chars = text.innerText.split(''); // 글자들을 배열로 분리
         text.innerHTML = ''; // 원래 텍스트를 지움
 
-        chars.forEach((char, index) => {
+        chars.forEach((char) => {
             const span = document.createElement('span');
             span.innerText = char; // 각 글자를 span으로 감싸기
             text.appendChild(span);
@@ -95,8 +96,9 @@ const Works = () => {
                 }
             );
         return () => {
-            // ScrollTrigger 인스턴스 정리
-            subani.scrollTrigger && subani.scrollTrigger.kill();
+            if (subani.scrollTrigger) {
+                subani.scrollTrigger.kill();
+            }
             subani.kill();
         };
     }, []);
