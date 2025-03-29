@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Tag = ({ children, color, style, className, ref }) => {
+interface TagProps {
+    children: React.ReactNode;
+    color: string;
+    style?: React.CSSProperties; // style은 선택적 속성
+    className?: string; // className은 선택적 속성
+    ref?: React.Ref<HTMLDivElement>; // ref는 선택적 속성
+}
+const Tag = React.forwardRef<HTMLDivElement, TagProps>(({ children, color, style, className }, ref) => {
     return (
         <div
             ref={ref}
