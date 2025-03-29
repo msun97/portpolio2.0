@@ -69,77 +69,19 @@ const index = () => {
         },
     ];
 
-    const subtitleRef = useRef();
-    const text1Ref = useRef();
-    const text2Ref = useRef();
-    const text3Ref = useRef();
-    useEffect(() => {
-        const subani = gsap.timeline({
-            scrollTrigger: {
-                trigger: subtitleRef.current,
-                start: 'top top',
-                end: 'bottom+=500 top',
-                scrub: 1,
-                pin: true,
-            },
-        });
-        subani
-            .fromTo(
-                text1Ref.current,
-                {
-                    y: -500,
-                },
-                {
-                    y: 0,
-                    duration: 1,
-                    ease: 'power2.out',
-                }
-            )
-            .fromTo(
-                text2Ref.current,
-                {
-                    y: -500,
-                },
-                {
-                    y: 0,
-                    duration: 1,
-                    ease: 'power2.out',
-                }
-            )
-            .fromTo(
-                text3Ref.current,
-                {
-                    y: -500,
-                },
-                {
-                    y: 0,
-                    duration: 1,
-                    ease: 'power2.out',
-                }
-            );
-    }, []);
     return (
         <section className="w-full overflow-hidden">
             <div className="absolute h-[100vh] z-[-1] bottom-0 w-full" />
             <div>
-                <div
-                    ref={subtitleRef}
-                    className="bg-[#A100FF] w-full h-screen text-center text-white flex flex-col items-center justify-center"
-                >
-                    <div className="h-fit overflow-hidden"> 
-                        <p
-                            className="font-designTenada text-[28px] sm:text-[32px] md:text-[40px]"
-                            ref={text1Ref}
-                        >
+                <div className="bg-[#A100FF] w-full h-screen text-center text-white flex flex-col items-center justify-center">
+                    <div className="h-fit overflow-hidden">
+                        <p className="font-designTenada text-[28px] sm:text-[32px] md:text-[40px]">
                             기획에서 배포까지
                         </p>
-                        <h2
-                            className="font-design text-[72px] sm:text-[128px] mb-[60px]"
-                            ref={text2Ref}
-                        >
+                        <h2 className="font-design text-[72px] sm:text-[128px] mb-[60px]">
                             TECH STACK
                         </h2>
-                        <p className="text-[16px] sm:text-[24px]" ref={text3Ref}>
+                        <p className="text-[16px] sm:text-[24px]">
                             디자인과 기술이 조화롭게 어우러지는 웹을 목표로
                         </p>
                     </div>

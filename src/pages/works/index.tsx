@@ -61,6 +61,7 @@ const Works = () => {
     const text1Ref = useRef();
     const text2Ref = useRef();
     useEffect(() => {
+        if (!subtitleRef.current || !text1Ref.current || !text2Ref.current) return;
         const subani = gsap.timeline({
             scrollTrigger: {
                 trigger: subtitleRef.current,
@@ -93,6 +94,11 @@ const Works = () => {
                     ease: 'power2.out',
                 }
             );
+        return () => {
+            // ScrollTrigger 인스턴스 정리
+            subani.scrollTrigger && subani.scrollTrigger.kill();
+            subani.kill();
+        };
     }, []);
     const workListRef1 = useRef();
     const workListRef2 = useRef();
@@ -151,6 +157,7 @@ const Works = () => {
                 },
             }
         );
+        ScrollTrigger.refresh();
     }, []);
     return (
         <section className="bg-[#000000] w-full overflow-hidden">

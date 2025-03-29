@@ -44,7 +44,7 @@ const Header = () => {
         } else {
             setIsContact(false);
         }
-    }, []);
+    }, [location]);
 
     const [isSticky, setIsSticky] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
