@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -223,12 +224,12 @@ const Section2 = () => {
                     >
                         <p className="text-[56px] sm:text-[58px] md:text-[95px]">FRONT-END</p>
                         <div className="border border-white rounded-[20px] px-5 py-[10px]">
-                            <a
+                            <Link
                                 href="/contact"
                                 className="text-[14px] sm:text-[17px] md:text-[20px]"
                             >
                                 CONTACT ME
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
