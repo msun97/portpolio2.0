@@ -24,7 +24,6 @@ const Home = () => {
                     <Section2 />
                     <Section3 />
                     <Section4 />
-                    {/* <Section5 /> */}
                 </div>
             ) : (
                 <div className="absolute bg-white w-screen h-screen font-coding flex text-left items-center justify-center top-0 left-0 z-100">
