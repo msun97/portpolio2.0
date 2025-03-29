@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const MobileHeaderModal = () => {
@@ -5,32 +6,32 @@ const MobileHeaderModal = () => {
         <div className="absolute bg-white w-screen h-screen z-30 mt-[30px] m-[-16px] p-4 text-[32px]">
             <ul>
                 <li className="py-1">
-                    <a
+                    <Link
                         href="/"
                         className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
                     >
                         ABOUT ME
-                    </a>
+                    </Link>
                 </li>
                 <li className="py-1 border-t border-t-gray-200">
-                    <a
+                    <Link
                         href="/works"
                         className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
                     >
                         WORKS
-                    </a>
+                    </Link>
                 </li>
                 <li className="py-1 border-t border-t-gray-200">
-                    <a
+                    <Link
                         href="/techstack"
                         className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
                     >
                         TECH STACK
-                    </a>
+                    </Link>
                 </li>
-                <li className="py-1 border-t border-t-gray-200">
-                    <a href="/contact">CONTACT</a>
-                </li>
+                {/* <li className="py-1 border-t border-t-gray-200">
+                    <Link href="/contact">CONTACT</Link>
+                </li> */}
             </ul>
         </div>
     );

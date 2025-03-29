@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import MobileHeaderModal from './Header/MobileHeaderModal';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
+import Link from 'next/link';
 
 const Header = () => {
     const [isTablet, setIsTablet] = useState(false);
@@ -73,9 +74,9 @@ const Header = () => {
                 color: isContact ? 'white' : 'black',
             }}
         >
-            <a href="/">
+            <Link href="/">
                 <h1 className="text-[24px]">KIMMISEON</h1>
-            </a>
+            </Link>
             {!isTablet ? (
                 <>
                     <div>
@@ -85,39 +86,39 @@ const Header = () => {
                     <nav className="flex justify-between font-primaryRegular">
                         <ul className="flex gap-4">
                             <li>
-                                <a
+                                <Link
                                     href="/"
                                     className={`relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-${
                                         isContact ? 'white' : 'black'
                                     } after:transition-all after:duration-300 hover:after:w-full`}
                                 >
                                     About Me,
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
+                                <Link
                                     href="/works"
                                     className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
                                 >
                                     Works,
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
+                                <Link
                                     href="/techstack"
                                     className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
                                 >
                                     Tech Stack,
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
                     {/* <div>
-                        <a href="/contact">
+                        <Link href="/contact">
                             <p className="font-primaryRegular relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-0 ">
                                 Let's Contact
                             </p>
-                        </a>
+                        </Link>
                     </div> */}
                 </>
             ) : (

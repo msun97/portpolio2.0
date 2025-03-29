@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const WorkList = ({
@@ -13,12 +14,12 @@ const WorkList = ({
 }) => {
     return (
         <div className="w-full h-screen relative" ref={ref}>
-            <a href={siteLink} target="_blank" rel="noopener noreferrer">
+            <Link href={siteLink} target="_blank" rel="noopener noreferrer">
                 <img
                     src={imgLink}
                     className="w-screen h-screen object-cover brightness-40 m-[-5px]"
                 />
-            </a>
+            </Link>
             <div className="absolute top-0 bottom-0 z-[5] text-white w-full h-full p-[15px] py-[60px] sm:p-[60px] flex justify-between flex-col md:flex-row">
                 <div className="flex flex-row-reverse md:flex-col items-center md:items-start justify-between text-[clamp(12px,2.5vw,16px)]  sm:text-[clamp(16px,2vw,20px)] md:text-[20px]">
                     <div>{techStack}</div>
@@ -36,12 +37,12 @@ const WorkList = ({
                         </div>
                     </div>
                     <div>
-                        <a href={siteLink} target="_blank" rel="noopener noreferrer">
+                        <Link href={siteLink} target="_blank" rel="noopener noreferrer">
                             <p>Go Site</p>
-                        </a>
-                        <a href={gitLink} target="_blank" rel="noopener noreferrer">
+                        </Link>
+                        <Link href={gitLink} target="_blank" rel="noopener noreferrer">
                             <p>Go Github</p>
-                        </a>
+                        </Link>
                     </div>
                     <div>{title}</div>
                 </div>
