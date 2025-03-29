@@ -6,7 +6,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section4 = () => {
     const sectionRef = useRef(null);
-    const triggerRef = useRef(null);
     const textRefs = {
         line1: useRef(null),
         line2: useRef(null),
@@ -15,7 +14,6 @@ const Section4 = () => {
 
     useEffect(() => {
         const section = sectionRef.current;
-        const trigger = triggerRef.current;
 
         // GSAP timeline for scroll animations
         const tl = gsap.timeline({
@@ -61,7 +59,7 @@ const Section4 = () => {
             ref={sectionRef}
             className="w-screen font-design h-screen flex justify-center items-center relative"
         >
-            <div ref={triggerRef} className="w-full h-full">
+            <div className="w-full h-full">
                 <div className="mx-[-10px] text-white text-[clamp(10px,15vw,250px)] w-full text-nowrap">
                     <div
                         ref={textRefs.line1}
