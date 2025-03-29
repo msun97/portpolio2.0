@@ -197,7 +197,7 @@ const Section3 = () => {
                         <Tag
                             key={tag.label}
                             color={tag.color}
-                            ref={(el) => (tagRefs.current[tag.label] = el)}
+                            ref={(el) => { tagRefs.current[tag.label] = el; }}
                             style={{
                                 position: 'absolute',
                                 bottom: `${randomPositions[index].bottom}px`,
