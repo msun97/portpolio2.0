@@ -6,10 +6,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger); // ScrollTrigger 플러그인 등록
 const Works = () => {
     useEffect(() => {
-        const text = document.querySelector('.title');
-        if (!text) return; // 💥 요소가 없으면 실행하지 않도록 방어 코드 추가
-
-        const chars = text.innerText.split(''); // 글자들을 배열로 분리
+        const text = document.querySelector('.your-selector') as HTMLElement;
+        const chars = text.innerText.split('');
         text.innerHTML = ''; // 원래 텍스트를 지움
 
         chars.forEach((char) => {
@@ -58,9 +56,9 @@ const Works = () => {
         });
     }, []);
 
-    const subtitleRef = useRef();
-    const text1Ref = useRef();
-    const text2Ref = useRef();
+    const subtitleRef = useRef<HTMLDivElement | null>(null);
+    const text1Ref = useRef<HTMLParagraphElement | null>(null);
+    const text2Ref = useRef<HTMLParagraphElement | null>(null);
     useEffect(() => {
         if (!subtitleRef.current || !text1Ref.current || !text2Ref.current) return;
         const subani = gsap.timeline({
@@ -102,9 +100,9 @@ const Works = () => {
             subani.kill();
         };
     }, []);
-    const workListRef1 = useRef();
-    const workListRef2 = useRef();
-    const workListRef3 = useRef();
+    const workListRef1 = useRef<HTMLDivElement | null>(null);
+    const workListRef2 = useRef<HTMLDivElement | null>(null);
+    const workListRef3 = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
         // workListRef1에 대한 scrollTrigger 설정
         gsap.fromTo(
