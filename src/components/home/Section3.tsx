@@ -58,7 +58,7 @@ const Section3 = () => {
         // Increment the animation trigger ref whenever the value changes
         animationTriggerRef.current += 1;
 
-        const handleMouseMove = (e) => {
+        const handleMouseMove = (e: React.MouseEvent) => {
             const { clientX, clientY } = e;
             contentMap[selectedValue].tags.forEach((tag, index) => {
                 const tagElement = tagRefs.current[tag.label];
