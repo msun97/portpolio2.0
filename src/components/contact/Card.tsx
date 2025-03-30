@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import React, { useMemo } from 'react';
 
-const Card = ({ modalName, handleOpenModal }) => {
+const Card = ({
+    modalName,
+    handleOpenModal,
+}: {
+    modalName: string | null;
+    handleOpenModal: (name: string) => void;
+}) => {
     const data = useMemo(() => {
         switch (modalName) {
             case 'recruit':
