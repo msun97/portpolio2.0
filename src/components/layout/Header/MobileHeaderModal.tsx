@@ -49,9 +49,9 @@ const MobileHeaderModal = ({ onClose }: { onClose: () => void }) => {
                         TECH STACK
                     </Link>
                 </li>
-                {/* <li className="py-1 border-t border-t-gray-200">
+                <li className="py-1 border-t border-t-gray-200">
                     <Link href="/contact">CONTACT</Link>
-                </li> */}
+                </li>
             </ul>
         </div>
     );

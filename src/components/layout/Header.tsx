@@ -113,13 +113,13 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    {/* <div>
+                    <div>
                         <Link href="/contact">
                             <p className="font-primaryRegular relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-0 ">
                                 Let's Contact
                             </p>
                         </Link>
-                    </div> */}
+                    </div>
                 </>
             ) : (
                 <>
