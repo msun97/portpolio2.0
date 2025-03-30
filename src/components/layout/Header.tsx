@@ -135,7 +135,7 @@ const Header = () => {
                             }`}
                         />
                     </div>
-                    {isModal && <MobileHeaderModal />}
+                    {isModal && <MobileHeaderModal onClose={toggleModal} />}
                 </>
             )}
         </header>
