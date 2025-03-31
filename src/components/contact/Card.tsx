@@ -66,11 +66,11 @@ const Card = ({
         }
     }, [modalName]);
     return (
-        <div className="bg-[#D9D9D9] h-full rounded-[20px] px-[75px] py-[110px] text-black font-secondary text-[24px] relative">
+        <div className="bg-[#D9D9D9] h-[60%] sm:h-full rounded-[20px] px-[30px]  sm:px-[50px] md:px-[75px] py-[110px] text-black font-secondary sm:text-[clamp(16px,0.3vw,17px)] md:text-[clamp(17px,0.1vw,24px)] relative">
             <img
                 src="/x.svg"
                 className="w-[24px] h-[24px] absolute top-[30px] right-[20px] cursor-pointer"
-                onClick={() => handleOpenModal()}
+                onClick={() => handleOpenModal('default')}
             />
             <ul className="flex flex-col gap-[50px] ">
                 {data.map((item) => {
@@ -82,7 +82,7 @@ const Card = ({
                             <div className="flex flex-col gap-4 flex-1">
                                 <p>{item.title}</p>
                                 <Link href={item.link} target="_blank" rel="noreferrer">
-                                    <p className="text-[16px] font-primaryRegular">
+                                    <p className="text-[clamp(15px,0.08vw,16px)] font-primaryRegular">
                                         {item.subtitle}
                                     </p>
                                 </Link>

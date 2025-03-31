@@ -65,7 +65,7 @@ const Contact = () => {
                 </div>
             </div>
             {isModalOpen ? (
-                <div className=" py-[110px] absolute top-0 right-[55px] w-[36%] h-full">
+                <div className=" py-[110px] absolute top-0 right-[55px] w-[75%] sm:w-[50%] md:w-[36%] h-full">
                     <Card modalName={modalName} handleOpenModal={handleOpenModal} />
                 </div>
             ) : (
