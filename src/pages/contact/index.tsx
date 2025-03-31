@@ -4,10 +4,15 @@ import { useState } from 'react';
 const Contact = () => {
     const [modalName, setModalName] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const handleOpenModal = (name: string) => {
-        setIsModalOpen(!isModalOpen);
-        setModalName(name);
+    const handleOpenModal = (eventOrName: string | React.MouseEvent<HTMLImageElement>) => {
+        if (typeof eventOrName === 'string') {
+            setModalName(eventOrName);
+            setIsModalOpen(!isModalOpen);
+        } else {
+            setIsModalOpen(false);
+        }
     };
+
     return (
         <section className=" w-full h-screen text-white overflow-hidden fixed z-[20]">
             <div className="brightness-50 bg-[url('/contactBg.jpg')] w-[110%] h-full absolute top-0 left-1/2 translate-x-[-50%] z-[-1] blur-[4px]" />
