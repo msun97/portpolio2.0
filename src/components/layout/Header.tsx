@@ -129,7 +129,7 @@ const Header = () => {
                     >
                         <p>Menu</p>
                         <img
-                            src="/x.svg"
+                            src={isContact?"/x-w.svg":"/x.svg"}
                             className={`transition-transform duration-300 ${
                                 isModal ? '' : 'rotate-45'
                             }`}

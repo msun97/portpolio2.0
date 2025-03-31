@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const MobileHeaderModal = ({ onClose }: { onClose: () => void }) => {
     const router = useRouter();
@@ -22,8 +23,25 @@ const MobileHeaderModal = ({ onClose }: { onClose: () => void }) => {
             document.body.style.overflow = 'auto';
         };
     }, []);
+
+    const [isContact, setIsContact] = useState(false);
+    const location = usePathname();
+    useEffect(() => {
+        if (location === '/contact' || location === '/works') {
+            setIsContact(true);
+        } else {
+            setIsContact(false);
+        }
+    }, [location]);
     return (
-        <div className="absolute bg-white w-screen h-screen z-30 mt-[30px] m-[-16px] p-4 text-[32px]">
+        <div
+            className={`absolute text-${
+                isContact ? 'white' : 'black'
+            } w-screen h-screen z-30 mt-[30px] m-[-16px] p-4 text-[32px]`}
+            style={{
+                backgroundColor: isContact ? 'black' : 'white',
+            }}
+        >
             <ul>
                 <li className="py-1">
                     <Link
