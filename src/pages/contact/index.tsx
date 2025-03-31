@@ -1,18 +1,43 @@
 import Card from '@/components/contact/Card';
-import { useState } from 'react';
+import gsap from 'gsap';
+import { useEffect, useRef, useState } from 'react';
 
 const Contact = () => {
     const [modalName, setModalName] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const modalRef = useRef(null);
     const handleOpenModal = (eventOrName?: string | React.MouseEvent<HTMLImageElement>) => {
         if (typeof eventOrName === 'string') {
             setModalName(eventOrName);
-            setIsModalOpen(true);
+            setShowModal(true);
+            setTimeout(() => setIsModalOpen(true), 10);
         } else {
-            setIsModalOpen(false);
+            handleCloseModal();
         }
     };
 
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    useEffect(() => {
+        if (isModalOpen) {
+            gsap.fromTo(
+                modalRef.current,
+                { x: '100%', opacity: 0 },
+                { x: '0%', opacity: 1, duration: 0.5, ease: 'power3.out' }
+            );
+        } else if (showModal) {
+            gsap.to(modalRef.current, {
+                x: '100%',
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power3.out',
+                onComplete: () => setShowModal(false),
+            });
+        }
+    }, [isModalOpen]);
     return (
         <section className=" w-full h-screen text-white overflow-hidden fixed z-[20]">
             <div className="brightness-50 bg-[url('/contactBg.jpg')] w-[110%] h-full absolute top-0 left-1/2 translate-x-[-50%] z-[-1] blur-[4px]" />
@@ -64,12 +89,13 @@ const Contact = () => {
                     <img src="/arrow-right.svg" className="w-[24px] h-[24px]" />
                 </div>
             </div>
-            {isModalOpen ? (
-                <div className=" py-[110px] absolute top-0 right-[55px] w-[75%] sm:w-[50%] md:w-[36%] h-full">
-                    <Card modalName={modalName} handleOpenModal={handleOpenModal} />
+            {showModal && (
+                <div
+                    ref={modalRef}
+                    className="py-[110px] absolute top-0 right-[55px] w-[75%] sm:w-[50%] md:w-[36%] h-full"
+                >
+                    <Card modalName={modalName} handleCloseModal={handleCloseModal} />
                 </div>
-            ) : (
-                ''
             )}
         </section>
     );

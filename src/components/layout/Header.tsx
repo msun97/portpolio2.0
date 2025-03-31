@@ -34,7 +34,6 @@ const Header = () => {
                 y: '0%',
                 opacity: 1,
                 ease: 'power3.out',
-                delay: location === '/' ? 3.5 : 0,
             }
         );
     }, []);
@@ -129,7 +128,7 @@ const Header = () => {
                     >
                         <p>Menu</p>
                         <img
-                            src={isContact?"/x-w.svg":"/x.svg"}
+                            src={isContact ? '/x-w.svg' : '/x.svg'}
                             className={`transition-transform duration-300 ${
                                 isModal ? '' : 'rotate-45'
                             }`}

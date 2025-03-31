@@ -3,10 +3,10 @@ import React, { useMemo } from 'react';
 
 const Card = ({
     modalName,
-    handleOpenModal,
+    handleCloseModal,
 }: {
     modalName: string | null;
-    handleOpenModal: (name: string) => void;
+    handleCloseModal: () => void;
 }) => {
     const data = useMemo(() => {
         switch (modalName) {
@@ -70,7 +70,7 @@ const Card = ({
             <img
                 src="/x.svg"
                 className="w-[24px] h-[24px] absolute top-[30px] right-[20px] cursor-pointer"
-                onClick={() => handleOpenModal('default')}
+                onClick={handleCloseModal}
             />
             <ul className="flex flex-col gap-[50px] ">
                 {data.map((item) => {

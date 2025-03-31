@@ -5,6 +5,8 @@ import Section2 from '@/components/home/Section2';
 import Section3 from '@/components/home/Section3';
 import Section4 from '@/components/home/Section4';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
+gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
@@ -16,6 +18,9 @@ const Home = () => {
         return () => clearTimeout(timer);
     }, []);
 
+    const skipToggle = () => {
+        setIsLoading(true);
+    };
     return (
         <>
             {isLoading ? (
@@ -27,7 +32,7 @@ const Home = () => {
                 </div>
             ) : (
                 <div className="absolute bg-white w-screen h-screen font-coding flex text-left items-center justify-center top-0 left-0 z-100">
-                    <Loading />
+                    <Loading onClick={skipToggle} />
                 </div>
             )}
         </>
