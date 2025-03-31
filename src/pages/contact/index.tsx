@@ -4,10 +4,10 @@ import { useState } from 'react';
 const Contact = () => {
     const [modalName, setModalName] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const handleOpenModal = (eventOrName: string | React.MouseEvent<HTMLImageElement>) => {
+    const handleOpenModal = (eventOrName?: string | React.MouseEvent<HTMLImageElement>) => {
         if (typeof eventOrName === 'string') {
             setModalName(eventOrName);
-            setIsModalOpen(!isModalOpen);
+            setIsModalOpen(true);
         } else {
             setIsModalOpen(false);
         }

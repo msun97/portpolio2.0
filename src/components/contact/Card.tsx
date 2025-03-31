@@ -70,7 +70,7 @@ const Card = ({
             <img
                 src="/x.svg"
                 className="w-[24px] h-[24px] absolute top-[30px] right-[20px] cursor-pointer"
-                onClick={handleOpenModal}
+                onClick={() => handleOpenModal()}
             />
             <ul className="flex flex-col gap-[50px] ">
                 {data.map((item) => {
