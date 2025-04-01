@@ -60,7 +60,9 @@ const Section4 = () => {
         });
 
         // 애니메이션 트리거 추적
-        triggersRef.current.push(tl.scrollTrigger);
+        if (tl.scrollTrigger) {
+            triggersRef.current.push(tl.scrollTrigger);
+        }
 
         // 각 라인별 애니메이션 순차 적용
         tl.to(textRefs.line1.current, {
