@@ -21,7 +21,10 @@ const Header = () => {
     }, []);
 
     const [isModal, setIsModal] = useState(false);
-    const toggleModal = () => setIsModal(!isModal);
+    const toggleModal = () => {
+        // 모달 토글 시 애니메이션을 위한 상태 변경
+        setIsModal(!isModal);
+    };
 
     const [isContact, setIsContact] = useState(false);
     const location = usePathname();
@@ -37,6 +40,7 @@ const Header = () => {
             }
         );
     }, []);
+
     useEffect(() => {
         if (location === '/contact' || location === '/works') {
             setIsContact(true);
@@ -134,7 +138,7 @@ const Header = () => {
                             }`}
                         />
                     </div>
-                    {isModal && <MobileHeaderModal onClose={toggleModal} />}
+                    {isModal && <MobileHeaderModal onClose={toggleModal} slideDirection="up" />}
                 </>
             )}
         </header>

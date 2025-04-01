@@ -31,16 +31,21 @@ const Section2 = () => {
                     trigger: containerRef.current,
                     start: 'top top',
                     end: 'top+=100 top',
-                    toggleActions: 'play none none reverse',
+                    toggleActions: 'restart pause resume reverse',
+                    fastScrollEnd: true,
                 },
             });
 
             introAnimation
-                .fromTo(text1Ref.current, { y: 100 }, { y: 0, duration: 1, ease: 'power2.out' })
+                .fromTo(
+                    text1Ref.current,
+                    { y: 100 },
+                    { y: 0, duration: 1, ease: 'power2.out', immediateRender: false }
+                )
                 .fromTo(
                     text2Ref.current,
                     { y: -100 },
-                    { y: 0, duration: 1, ease: 'power2.out' },
+                    { y: 0, duration: 1, ease: 'power2.out', immediateRender: false },
                     0
                 );
 
