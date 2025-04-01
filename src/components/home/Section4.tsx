@@ -13,7 +13,7 @@ const Section4 = () => {
     };
 
     // 이 컴포넌트에서 생성한 ScrollTrigger 인스턴스를 추적하기 위한 참조
-    const triggersRef = useRef([]);
+    const triggersRef = useRef<ScrollTrigger[]>([]);
 
     useEffect(() => {
         const section = sectionRef.current;
