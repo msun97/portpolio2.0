@@ -4,7 +4,15 @@ import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 
-const MobileHeaderModal = ({ onClose }: { onClose: () => void }, slideDirection = 'up') => {
+type MobileHeaderModalProps = {
+    onClose: () => void;
+    slideDirection?: string; // ✅ 선택적 props로 추가
+};
+
+const MobileHeaderModal: React.FC<MobileHeaderModalProps> = ({
+    onClose,
+    slideDirection = 'up',
+}) => {
     const router = useRouter();
     const modalRef = useRef(null);
     const contentRef = useRef(null);
@@ -19,7 +27,7 @@ const MobileHeaderModal = ({ onClose }: { onClose: () => void }, slideDirection 
                     y: '-100%',
                 },
                 {
-                    y: '0%',    
+                    y: '0%',
                     duration: 0.5,
                     ease: 'power2.out',
                 }
