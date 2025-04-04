@@ -3,6 +3,7 @@ import MobileHeaderModal from './Header/MobileHeaderModal';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import Link from 'next/link';
+import clsx from 'clsx';
 
 const Header = () => {
     const [isTablet, setIsTablet] = useState(false);
@@ -22,7 +23,6 @@ const Header = () => {
 
     const [isModal, setIsModal] = useState(false);
     const toggleModal = () => {
-        // 모달 토글 시 애니메이션을 위한 상태 변경
         setIsModal(!isModal);
     };
 
@@ -91,9 +91,10 @@ const Header = () => {
                             <li>
                                 <Link
                                     href="/"
-                                    className={`relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-${
-                                        isContact ? 'white' : 'black'
-                                    } after:transition-all after:duration-300 hover:after:w-full`}
+                                    className={clsx(
+                                        "relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full",
+                                        isContact ? 'after:bg-white' : 'after:bg-black'
+                                    )}
                                 >
                                     About Me,
                                 </Link>
@@ -101,7 +102,10 @@ const Header = () => {
                             <li>
                                 <Link
                                     href="/works"
-                                    className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+                                    className={clsx(
+                                        "relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full",
+                                        isContact ? 'after:bg-white' : 'after:bg-black'
+                                    )}
                                 >
                                     Works,
                                 </Link>
@@ -109,16 +113,25 @@ const Header = () => {
                             <li>
                                 <Link
                                     href="/techstack"
-                                    className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+                                    className={clsx(
+                                        "relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full",
+                                        isContact ? 'after:bg-white' : 'after:bg-black'
+                                    )}
                                 >
                                     Tech Stack,
                                 </Link>
                             </li>
                         </ul>
                     </nav>
+
                     <div>
                         <Link href="/contact">
-                            <p className="font-primaryRegular relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-black after:transition-all after:duration-300 hover:after:w-0 ">
+                            <p
+                                className={clsx(
+                                    "font-primaryRegular relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[1px] after:transition-all after:duration-300 hover:after:w-0",
+                                    isContact ? 'after:bg-white' : 'after:bg-black'
+                                )}
+                            >
                                 Let&apos;s Contact
                             </p>
                         </Link>
