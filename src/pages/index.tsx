@@ -1,39 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import Loading from '@/components/home/Loading';
 import Section1 from '@/components/home/Section1';
-import Section2 from '@/components/home/Section2';
-import Section3 from '@/components/home/Section3';
-import Section4 from '@/components/home/Section4';
+import MosaicTransition from '@/components/home/MosaicTransition';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 gsap.registerPlugin(ScrollTrigger);
+
 const Home = () => {
     const [isLoading, setIsLoading] = useState(false);
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(true);
-            ScrollTrigger.refresh();
-        }, 4000);
+    const heroRef = useRef<HTMLDivElement>(null);
 
-        return () => clearTimeout(timer);
-    }, []);
-
-    const skipToggle = () => {
+    const finishLoading = () => {
         setIsLoading(true);
+        ScrollTrigger.refresh();
     };
     return (
         <>
             {isLoading ? (
-                <div className=" overflow-x-hidden mb-32">
-                    <Section1 />
-                    <Section2 />
-                    <Section3 />
-                    <Section4 />
-                </div>
+                <>
+                    <div ref={heroRef} className="-mt-[100px] mb-32">
+                        <Section1 />
+                    </div>
+                    <MosaicTransition heroRef={heroRef} nextHref="/works" />
+                    <div className="h-screen" style={{ backgroundColor: '#222831' }} />
+                </>
             ) : (
-                <div className="absolute bg-white w-screen h-screen font-coding flex text-left items-center justify-center top-0 left-0 z-100">
-                    <Loading onClick={skipToggle} />
-                </div>
+                <Loading onClick={finishLoading} onComplete={finishLoading} />
             )}
         </>
     );

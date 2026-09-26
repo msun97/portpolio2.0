@@ -1,19 +1,17 @@
-import { ReactNode } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
+import Layout2025 from './Layout2025';
+import Layout2026 from './Layout2026';
 
 interface LayoutProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  return (
-    <div className="min-h-screen relative">
-      <Header />
-      <main className="">{children}</main>
-      <Footer />
-    </div>
-  );
+    const pathname = usePathname();
+    const isLegacy = pathname?.startsWith('/2025');
+
+    return isLegacy ? <Layout2025>{children}</Layout2025> : <Layout2026>{children}</Layout2026>;
 };
 
 export default Layout;

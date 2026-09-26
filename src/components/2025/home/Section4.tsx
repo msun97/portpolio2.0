@@ -12,14 +12,12 @@ const Section4 = () => {
         line3: useRef(null),
     };
 
-    // 이 컴포넌트에서 생성한 ScrollTrigger 인스턴스를 추적하기 위한 참조
     const triggersRef = useRef<ScrollTrigger[]>([]);
 
     useEffect(() => {
         const section = sectionRef.current;
         if (!section) return;
 
-        // 초기 상태 설정 - 텍스트 라인의 초기 스타일 설정
         Object.values(textRefs).forEach((ref) => {
             if (ref.current) {
                 gsap.set(ref.current, {
@@ -32,7 +30,6 @@ const Section4 = () => {
             }
         });
 
-        // 핀 설정
         const pinTrigger = ScrollTrigger.create({
             trigger: section,
             start: 'top top',
@@ -41,13 +38,11 @@ const Section4 = () => {
             pinSpacing: true,
             anticipatePin: 1,
             markers: false,
-            id: 'section4-pin', // ID를 지정하여 나중에 식별하기 쉽게 함
+            id: 'section4-pin',
         });
 
-        // 핀 트리거 추적
         triggersRef.current.push(pinTrigger);
 
-        // 애니메이션 타임라인
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: section,
@@ -55,16 +50,14 @@ const Section4 = () => {
                 end: '+=100%',
                 scrub: 1,
                 markers: false,
-                id: 'section4-animation', // ID를 지정하여 나중에 식별하기 쉽게 함
+                id: 'section4-animation',
             },
         });
 
-        // 애니메이션 트리거 추적
         if (tl.scrollTrigger) {
             triggersRef.current.push(tl.scrollTrigger);
         }
 
-        // 각 라인별 애니메이션 순차 적용
         tl.to(textRefs.line1.current, {
             backgroundImage: 'linear-gradient(to right, #A100FF 100%, #A100FF 100%)',
             backgroundClip: 'text',
@@ -101,17 +94,13 @@ const Section4 = () => {
                 '+=0.1'
             );
 
-        // 클린업 함수 - 이 컴포넌트에서 생성한 ScrollTrigger만 정리
         return () => {
-            // 타임라인 정리
             if (tl) tl.kill();
 
-            // 이 컴포넌트에서 생성한 ScrollTrigger 인스턴스만 정리
             triggersRef.current.forEach((trigger) => {
                 if (trigger) trigger.kill();
             });
 
-            // 참조 배열 초기화
             triggersRef.current = [];
         };
     }, []);

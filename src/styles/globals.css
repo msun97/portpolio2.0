@@ -36,6 +36,23 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'JoseonGulim';
+    src: url('/2026/ChosunGu/ChosunGu.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bitcount';
+    src: url('https://fonts.gstatic.com/s/bitcount/v3/ijxXs53kQsE1Y5J-lI1wubXnlQH-1-E1LhaU1dJRZZaHU0slfybi9GQwiTv06bjtugLjdPqK3d9XKDqRc2jrJlC4ZRsgxqxP-aVoJVvq06I.ttf')
+        format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --background-color: #ffffff;
     --perspective: 2000px;
@@ -89,6 +106,10 @@
     --font-designTenada: 'Tenada', 'Pretendard-Bold', Pretendard, -apple-system, BlinkMacSystemFont,
         system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
         'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    --font-chosunGulim: 'JoseonGulim', 'Pretendard-Regular', Pretendard, -apple-system,
+        BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+        'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        sans-serif;
     --font-size-root: 16px;
     --font-size-base: 1rem;
 
@@ -330,6 +351,11 @@
     --font-coding: var(--font-coding);
     --font-design: var(--font-design);
     --font-designTenada: var(--font-designTenada);
+    --font-chosunGulim: 'JoseonGulim', 'Pretendard-Regular', Pretendard, -apple-system,
+        BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+        'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        sans-serif;
+    --font-bitcount: 'Bitcount', sans-serif;
 
     --breakpoint-sm: 640px;
     --breakpoint-md: 1024px;
@@ -344,6 +370,17 @@
         to {
             stroke-dashoffset: 0;
             /* 끝점 (선이 다 채워짐) */
+        }
+    }
+
+    --animate-arrowBounce: arrowBounce 1.4s ease-in-out infinite;
+    @keyframes arrowBounce {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(4px);
         }
     }
 }
