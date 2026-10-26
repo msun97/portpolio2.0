@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Loading from '@/components/home/Loading';
 import Section1 from '@/components/home/Section1';
 import MosaicTransition from '@/components/home/MosaicTransition';
+import GrowingFooter from '@/components/home/GrowingFooter';
 import WorksSection from '@/components/works/WorksSection';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
@@ -52,6 +53,7 @@ const Home = () => {
                             <WorksSection id="works" />
                         </div>
                     </div>
+                    <GrowingFooter />
                     <MosaicTransition heroRef={heroRef} worksRef={worksRef} />
                 </>
             ) : (
