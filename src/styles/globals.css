@@ -45,6 +45,14 @@
 }
 
 @font-face {
+    font-family: 'GmarketSans';
+    src: url('/fonts/GmarketSansBold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Bitcount';
     src: url('https://fonts.gstatic.com/s/bitcount/v3/ijxXs53kQsE1Y5J-lI1wubXnlQH-1-E1LhaU1dJRZZaHU0slfybi9GQwiTv06bjtugLjdPqK3d9XKDqRc2jrJlC4ZRsgxqxP-aVoJVvq06I.ttf')
         format('truetype');
@@ -382,5 +390,27 @@
         50% {
             transform: translateY(4px);
         }
+    }
+}
+
+/* 커스텀 스크롤바 */
+html::-webkit-scrollbar {
+    width: 10px;
+}
+html::-webkit-scrollbar-track {
+    background: #222831;
+}
+html::-webkit-scrollbar-thumb {
+    background: #76abae;
+    border-radius: 999px;
+    border: 3px solid #222831;
+}
+html::-webkit-scrollbar-thumb:hover {
+    background: #9cc7c9;
+}
+@supports (-moz-appearance: none) {
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: #76abae #222831;
     }
 }

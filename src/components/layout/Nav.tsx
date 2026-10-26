@@ -1,19 +1,29 @@
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 const NAV_LINK_CLASS =
     "relative font-chosunGulim text-[20px] text-[#eeeeee] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-[#76ABAE] after:transition-all after:duration-300 hover:after:w-full";
 
 const Nav = () => {
+    const pathname = usePathname();
+    const router = useRouter();
+
+    const handleWorksClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        if (pathname === '/') {
+            document.getElementById('works')?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            router.push('/#works');
+        }
+    };
+
     return (
-        <nav
-            className="fixed top-0 left-0 z-40 flex items-start h-[100px] w-full pt-[20px] px-[100px] backdrop-blur-md"
-            style={{ backgroundColor: 'rgba(34, 40, 49, 0.6)' }}
-        >
+        <nav className="fixed top-0 left-0 z-40 flex items-start h-[100px] w-full bg-transparent pt-[20px] px-[100px] backdrop-blur-md">
             <div className="flex items-center gap-[100px]">
                 <Link href="/" className={NAV_LINK_CLASS}>
                     김미선
                 </Link>
-                <Link href="/works" className={NAV_LINK_CLASS}>
+                <Link href="/#works" onClick={handleWorksClick} className={NAV_LINK_CLASS}>
                     WorkList.tsx
                 </Link>
                 <Link href="/techstack" className={NAV_LINK_CLASS}>
