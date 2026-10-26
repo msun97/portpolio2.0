@@ -63,7 +63,6 @@ const Section3 = () => {
     }, []);
 
     useEffect(() => {
-        // Increment the animation trigger ref whenever the value changes
         animationTriggerRef.current += 1;
 
         const handleMouseMove = (e: MouseEvent) => {
@@ -85,11 +84,9 @@ const Section3 = () => {
             });
         };
 
-        // Clear previous animations before starting new ones
         gsap.killTweensOf('.fade-in');
         gsap.killTweensOf('.tag');
 
-        // Restart animations with a slight delay to ensure clean start
         setTimeout(() => {
             gsap.fromTo(
                 '.fade-in',
@@ -100,7 +97,6 @@ const Section3 = () => {
                     duration: 0.8,
                     ease: 'power2.out',
                     stagger: 0.1,
-                    // Add a unique key to force re-animation
                     data: animationTriggerRef.current,
                 }
             );
@@ -111,7 +107,6 @@ const Section3 = () => {
                 {
                     width: 'auto',
                     ease: 'power3.out',
-                    // Add a unique key to force re-animation
                     data: animationTriggerRef.current,
                 }
             );
@@ -124,7 +119,6 @@ const Section3 = () => {
         };
     }, [selectedValue]);
 
-    // Rest of the component remains the same
     const randomPositions = useMemo(() => {
         return contentMap[selectedValue].tags.map(() => ({
             bottom: Math.random() * 800 + 200,

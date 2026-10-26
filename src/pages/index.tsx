@@ -1,39 +1,63 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Loading from '@/components/home/Loading';
 import Section1 from '@/components/home/Section1';
-import Section2 from '@/components/home/Section2';
-import Section3 from '@/components/home/Section3';
-import Section4 from '@/components/home/Section4';
+import MosaicTransition from '@/components/home/MosaicTransition';
+import GrowingFooter from '@/components/home/GrowingFooter';
+import WorksSection from '@/components/works/WorksSection';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 gsap.registerPlugin(ScrollTrigger);
+
+const HAS_SEEN_LOADING_KEY = 'hasSeenLoading';
+
 const Home = () => {
     const [isLoading, setIsLoading] = useState(false);
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(true);
-            ScrollTrigger.refresh();
-        }, 4000);
+    const [checkedSession, setCheckedSession] = useState(false);
+    const heroRef = useRef<HTMLDivElement>(null);
+    const worksRef = useRef<HTMLDivElement>(null);
 
-        return () => clearTimeout(timer);
+    const finishLoading = () => {
+        setIsLoading(true);
+        sessionStorage.setItem(HAS_SEEN_LOADING_KEY, '1');
+        ScrollTrigger.refresh();
+    };
+
+    useEffect(() => {
+        if (sessionStorage.getItem(HAS_SEEN_LOADING_KEY)) {
+            setIsLoading(true);
+        }
+        setCheckedSession(true);
     }, []);
 
-    const skipToggle = () => {
-        setIsLoading(true);
-    };
+    useEffect(() => {
+        const original = document.body.style.backgroundColor;
+        document.body.style.backgroundColor = '#222831';
+        return () => {
+            document.body.style.backgroundColor = original;
+        };
+    }, []);
+
+    if (!checkedSession) return null;
+
     return (
         <>
             {isLoading ? (
-                <div className=" overflow-x-hidden mb-32">
-                    <Section1 />
-                    <Section2 />
-                    <Section3 />
-                    <Section4 />
-                </div>
+                <>
+                    <div>
+                        <div ref={heroRef} className="-mt-[100px] h-screen">
+                            <Section1 />
+                        </div>
+                    </div>
+                    <div>
+                        <div ref={worksRef}>
+                            <WorksSection id="works" />
+                        </div>
+                    </div>
+                    <GrowingFooter />
+                    <MosaicTransition heroRef={heroRef} worksRef={worksRef} />
+                </>
             ) : (
-                <div className="absolute bg-white w-screen h-screen font-coding flex text-left items-center justify-center top-0 left-0 z-100">
-                    <Loading onClick={skipToggle} />
-                </div>
+                <Loading onClick={finishLoading} onComplete={finishLoading} />
             )}
         </>
     );

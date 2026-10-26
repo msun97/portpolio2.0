@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 type MobileHeaderModalProps = {
     onClose: () => void;
-    slideDirection?: string; // ✅ 선택적 props로 추가
+    slideDirection?: string;
 };
 
 const MobileHeaderModal: React.FC<MobileHeaderModalProps> = ({
@@ -18,9 +18,7 @@ const MobileHeaderModal: React.FC<MobileHeaderModalProps> = ({
     const contentRef = useRef(null);
 
     useEffect(() => {
-        // 모달이 처음 마운트될 때 초기 위치 설정
         if (modalRef.current) {
-            // 모달 배경 애니메이션
             gsap.fromTo(
                 modalRef.current,
                 {
@@ -35,32 +33,27 @@ const MobileHeaderModal: React.FC<MobileHeaderModalProps> = ({
         }
 
         if (contentRef.current) {
-            // 모달 콘텐츠 애니메이션 - 아래에서 위로 슬라이드
             gsap.fromTo(
                 contentRef.current,
                 {
-                    y: '-100%', // 화면 아래에서 시작
+                    y: '-100%',
                 },
                 {
-                    y: '0%', // 원래 위치로 이동
+                    y: '0%',
                     duration: 0.7,
                     ease: 'power3.out',
-                    delay: 0.1, // 배경보다 약간 늦게 시작
+                    delay: 0.1,
                 }
             );
         }
 
-        // 클린업 함수
         return () => {
-            // 컴포넌트가 언마운트될 때 애니메이션 정리
             gsap.killTweensOf(modalRef.current);
             gsap.killTweensOf(contentRef.current);
         };
     }, [slideDirection]);
 
-    // 모달 닫기 애니메이션
     const handleClose = () => {
-        // 모달 콘텐츠 먼저 아래로 슬라이드
         gsap.to(contentRef.current, {
             y: '100%',
             opacity: 0.7,
@@ -68,13 +61,12 @@ const MobileHeaderModal: React.FC<MobileHeaderModalProps> = ({
             ease: 'power3.in',
         });
 
-        // 그 다음 배경 페이드 아웃
         gsap.to(modalRef.current, {
             opacity: 0,
             duration: 0.3,
             delay: 0.2,
             ease: 'power2.in',
-            onComplete: onClose, // 애니메이션 완료 후 모달 상태 변경
+            onComplete: onClose,
         });
     };
 
